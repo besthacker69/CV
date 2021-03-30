@@ -33,6 +33,14 @@
 								<a>ken.cmdii.com</a>
 							</v-list-item-content>
 						</v-list-item>
+						<v-list-item>
+							<v-list-item-icon>
+								<v-icon>mdi-github</v-icon>
+							</v-list-item-icon>
+							<v-list-item-content class="text-overline">
+								<a href="https://github.com/besthacker69" target="_blank">GITHUB</a>
+							</v-list-item-content>
+						</v-list-item>
 					</v-list>
 				</div>
 			</v-col>
