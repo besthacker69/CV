@@ -14,7 +14,8 @@
     "vue": "^2.6.11",
     "vue-chartjs": "^3.5.1",
     "vue-router": "^3.4.8",
-    "vuetify": "^2.3.16"
+    "vuetify": "^2.3.16",
+    "webpack-bundle-analyzer": "^4.4.0"
   },
   "devDependencies": {
     "@mdi/font": "^5.9.55",

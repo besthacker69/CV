@@ -1,5 +1,5 @@
 <template>
-    <v-app class="fill-height brightness" style="background:url('back.png') right; background-size: cover;">
+    <v-app class="fill-height brightness" style="background:url('back.webp') right; background-size: cover;">
 		<div class="" style="height:100vh;">
 		<!-- <v-img src="back.png" width="100%" height="100%" style="position:absolute; right:-22%; top:6%;"></v-img> -->
 		<!-- <v-img src="nasgor.png" width="600px" style="position:absolute; right:-22%; top:6%;"></v-img> -->
@@ -171,7 +171,7 @@
 						<v-img
 							eager
 							class="scale-up-center"
-							src="character.png"
+							src="character.webp"
 						>
 							<template v-slot:placeholder>
 								<v-row
@@ -192,7 +192,7 @@
 							style="position:absolute; right:22%; top:33%;"
 							class="vibrate"
 
-							src="eyeglow.png"
+							src="eyeglow.webp"
 						/>
 						<v-img
 							eager
@@ -200,7 +200,7 @@
 							style="position:absolute; right:42%; top:35%;"
 							class="vibrate"
 
-							src="eyeglow.png"
+							src="eyeglow.webp"
 						/>
 						<v-img
 							eager
@@ -209,7 +209,7 @@
 							class="scale-up-center"
 							:style="{'filter': 'hue-rotate('+hueRotate+'deg)'}"
 
-							src="glow.png"
+							src="glow.webp"
 						/>
 					</v-col>
 				</v-row>
