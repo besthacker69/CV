@@ -12,17 +12,7 @@ const routes = [
 		path: '/',
 		component: () => import(/* webpackChunkName: "Home" */ '@/components/home')
 	},
-	{
-		path: '/skills',
-		component: () => import(/* webpackChunkName: "Skill" */ '@/components/skills')
-	},
-	{
-		path: '/projects',
-		component: () => import(/* webpackChunkName: "Project" */ '@/components/projects')
-	},
-
 ]
-
 
 const router = new VueRouter({
 	mode: 'history',

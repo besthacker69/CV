@@ -1,147 +1,72 @@
 <template>
-    <v-app class="fill-height brightness" style="background:url('back.webp') right; background-size: cover;">
-		<div class="" style="height:100vh;">
-		<!-- <v-img src="back.png" width="100%" height="100%" style="position:absolute; right:-22%; top:6%;"></v-img> -->
-		<!-- <v-img src="nasgor.png" width="600px" style="position:absolute; right:-22%; top:6%;"></v-img> -->
+    <v-app>
+		<div
+		
+		>
 			<div 
-				class="d-flex flex-row align-center justify-space-between px-4" 
-				style="width:100vw; border-bottom:1px solid; border-color:rgb(200,200,200,0.15); position:fixed; height:55px;"
+				class="d-flex flex-row align-center px-4" 
+				style="width:100vw; border-bottom:1px solid; border-color:rgb(200,200,200,0.15); position:fixed; height:45px; z-index:9999;"
+				:style="scrollPosition > 50 ? 'background-color:black' : 'background-color:transparent'"
 			>	
-				<!-- <div class="d-flex flex-row align-center justify-space-between" style="width:100%; max-width:1200px;"> -->
-					<div class="d-flex flex-row" style="cursor:pointer; line-height:1;" v-on:click="menuLink('/', 0)">
-						<v-icon large :class="$vuetify.breakpoint.xs ? 'pr-0':'pr-2'">mdi-account</v-icon>
-						<div id="logo" class="d-flex flex-column justify-center align-start">
-							<span class="text-center" style="font-size:1rem; font-weight:500;"> Ken Welly </span>
-							<span class="text-center" style="font-size:0.7rem; font-weight:300;"> Curriculum Vitae </span>
-						</div>
-					</div>
-					<!-- <h3 class="" style="font-size:20px; font-weight:500;">PNC Properti</h3> -->
-					<div class="d-flex flex-row align-center justify-center">
-						<v-menu offset-y content-class="elevation-1">
-							<template v-slot:activator="{ on, attrs }">
-								<v-btn 
-									text class="pa-6 text-capitalize" 
-									:disabled="!user.name" height="40" 
-									v-bind="attrs" 
-									v-on="on">
-									<span class="text-body-2 pr-3">{{ user.name }} - {{randomNum}}</span>
-									<div class="text-caption d-flex flex-row align-center justify-center grey rounded-circle">
-										<v-icon small color="white" class="pa-2">mdi-account</v-icon>
-									</div>
-								</v-btn>
-							</template>
-							<!-- <v-list dense class="">
-								<v-list-item v-if="user.level == 'Admin'" v-on:click="menuLink('/admin')">
-									<v-list-item-icon>
-										<v-icon>mdi-account-multiple</v-icon>
-									</v-list-item-icon>
-									<v-list-item-content>
-										<v-list-item-title>Admin Akun</v-list-item-title>
-									</v-list-item-content>
-								</v-list-item>
-								<v-list-item>
-									<v-list-item-icon>
-										<v-icon>mdi-logout</v-icon>
-									</v-list-item-icon>
-									<v-list-item-content>
-										<v-list-item-title>Log Out</v-list-item-title>
-									</v-list-item-content>
-								</v-list-item>
-							</v-list> -->
-						</v-menu>
+				<v-app-bar-nav-icon 
+					v-if="$vuetify.breakpoint.xs"
+					@click="openDialog()"
+					:disabled="debounce"
+				> <v-icon v-if="dialog == true">mdi-close</v-icon> </v-app-bar-nav-icon>
+
+				<div 
+					class="d-flex flex-row px-2" 
+					style="cursor:pointer; line-height:1;"
+					:style="$vuetify.breakpoint.xs || $vuetify.breakpoint.sm ? 'margin:auto;':''" 
+					v-on:click="menuLink('/', '#home')"
+				>
+					<v-icon class="pr-2">mdi-account-circle</v-icon>
+					<div class="d-flex flex-column justify-center align-start">
+						<span class="text-center" style="font-size:1rem; font-weight:500;"> CV </span>
+						<span
+							v-if="!$vuetify.breakpoint.xs"
+							class="text-center" 
+							style="font-size:0.7rem; font-weight:300;"
+						> Portfolio
+						</span>
 					</div>
 				</div>
-			<!-- Display nav for mobile users -->
-			<div 
-				style="position: fixed; width:100vw; bottom:0; z-index:9000; border-top:1px solid; border-color:rgb(200,200,200,0.15);" 
-				class="d-flex d-md-none"
-			>
 				<v-tabs
-					v-if="user.name" 
+					v-if="!$vuetify.breakpoint.xs"
 					background-color="transparent"
-					color="primary"
-					centered
-					height="55px"
-					icons-and-text
-					center-active 
+					color="grey"
+					hide-slider
+					right
+					height="45px"
 					show-arrows
 					:value="drawer"
 					v-model="currentNav"
+					class="px-4"
 				>
 					<v-tab
 						v-for="item in menu"
 						:key="item.index"
-						:transition="false" :reverse-transition="false"
-						@click="menuLink(item.link, item.hueRotate)"
+						@click="menuLink(item.link, item.hash)"
+						@mouseover="item.hover = true" 
+						@mouseout="item.hover = false" 
 						class="text-capitalize px-0"
-						style="font-size:0.7rem; letter-spacing:0.020em; font-weight:300; min-width:70px;"
+						style="font-size:0.8rem; letter-spacing:0.020em; font-weight:300; min-width:100px;"
 					>
-						{{ item.title }}
-						<v-icon>{{item.icon}}</v-icon>
-					</v-tab>
-				</v-tabs>
-				<v-tabs
-					v-if="!user.name"
-					background-color="grey lighten-4"
-					color="primary"
-					centered
-					height="55px"
-					icons-and-text
-					center-active 
-					show-arrows
-					:value="drawer"
-				>
-					<v-tab
-						:transition="false" :reverse-transition="false"
-						@click="menuLink(item.link, 0)"
-						class="text-capitalize px-0"
-						style="font-size:0.7rem; letter-spacing:0.020em; font-weight:300; min-width:70px;"
-					>
-						Login
-						<v-icon>mdi-account</v-icon>
+						<span :class="{'white--text': item.hover}">{{ item.title }}</span>
+						<!-- <v-icon>{{item.icon}}</v-icon> -->
 					</v-tab>
 				</v-tabs>
 			</div>
-			<div 
-				style="position: fixed; width:100vw; bottom:0; z-index:9000; height:55px; border-top:1px solid; border-color:rgb(200,200,200,0.1); background-color:rgb(200,200,200,0);" 
-				class="d-none d-md-flex flex-row align-end justify-space-between"
-			>
-				<span class="text-body-2 pa-4 grey--text text-darken-1">Site Design / System @{{new Date().getFullYear()}}</span>
-			</div>
-
-			<v-navigation-drawer 
-				v-model="drawer" app floating permanent 
-				class="transparent d-none d-md-flex" width="210" 
-				style="height:calc(100vh - 55px - 55px); border-right:1px solid; border-color:rgb(200,200,200,0.1); margin-top:55px;"
+			<div>
+			<!-- <v-container 
 				v-if="user.name"
+				fluid
 			>
-				<v-list dense shaped nav class="px-0 pt-4">
-					<nav :class="{toolbar: (!$route.path.includes('admin') && !$route.path.includes('login'))}">
-						<v-list-item
-							v-for="item in menu"
-							:key="item.index"
-							link
-							:class="($route.path == item.link) ? 'primary' : ''"
-							@click="menuLink(item.link, item.hueRotate)"
-						>
-							<v-list-item-icon class="ml-2 mr-6">
-								<v-icon :class="($route.path == item.link) ? 'white--text' : ''">{{item.icon}}</v-icon>
-							</v-list-item-icon>
-							<v-list-item-content class="text-left">
-								<v-list-item-title :class="($route.path == item.link) ? 'white--text' : ''">{{item.title}}</v-list-item-title>
-							</v-list-item-content>
-						</v-list-item>
-					</nav>
-				</v-list>
-			</v-navigation-drawer>
-			<v-container fluid style="margin-top:67px;" v-if="user.name">
 				<v-row>
 					<v-col
-						style="height:calc(100vh - 55px - 55px); z-index:9000;"
-						:style="[$vuetify.breakpoint.xs || $vuetify.breakpoint.sm ? {'margin-left':'0px'}:{'margin-left':'220px'}]"
 						class=""
-					>
-						<div class="py-0 px-2 d-flex flex-row" style="width:300px;">
+					> -->
+						<!-- <div class="py-0 px-2 d-flex flex-row" style="width:300px;">
 							<span class="text-overline">Slide Me:</span>
 							<v-slider
 								dense
@@ -151,72 +76,18 @@
 								class="px-2"
 								hide-details
 							></v-slider>
-						</div>
+						</div> -->
 						<transition name="slide-fade" mode="out-in">
 							<router-view
-								class=""
 								style=""
 								@getSnackbar="getSnackbar"
 								:user="user"
 							/>
 						</transition>
-					</v-col>
-					<v-col 
-						cols="12" sm="10" md="5"
-						class="pa-0"
-						:style="$vuetify.breakpoint.xs || $vuetify.breakpoint.sm ? 'margin-right:19%;' : 'margin-right:7%;'"
-						:class="$vuetify.breakpoint.xs ? 'mobile-size-fix' : ''"
-						style="position:absolute; bottom:0; right:0; z-index:1000;"
-					>
-						<v-img
-							eager
-							class="scale-up-center"
-							src="character.webp"
-						>
-							<template v-slot:placeholder>
-								<v-row
-									class="fill-height ma-0"
-									align="center"
-									justify="center"
-								>
-									<v-progress-circular
-									indeterminate
-									color="grey lighten-5"
-									></v-progress-circular>
-								</v-row>
-							</template>
-						</v-img>
-						<v-img
-							eager
-							width="10"
-							style="position:absolute; right:22%; top:33%;"
-							class="vibrate"
-
-							src="eyeglow.webp"
-						/>
-						<v-img
-							eager
-							width="10"
-							style="position:absolute; right:42%; top:35%;"
-							class="vibrate"
-
-							src="eyeglow.webp"
-						/>
-						<v-img
-							eager
-							width="52%"
-							style="position:absolute; right:10%; top:33%;"
-							class="scale-up-center"
-							:style="{'filter': 'hue-rotate('+hueRotate+'deg)'}"
-
-							src="glow.webp"
-						/>
-					</v-col>
+					<!-- </v-col>
 				</v-row>
-			</v-container>
-			<login
-				:user="user"
-			/>
+			</v-container> -->
+			</div>
 			<v-snackbar
 				light
 				v-model="snackbar.active"
@@ -239,20 +110,51 @@
 					</v-btn>
 				</template>
 			</v-snackbar>
+			<v-dialog
+				v-if="$vuetify.breakpoint.xs"
+				v-model="dialog"
+				fullscreen
+				hide-overlay
+				transition="dialog-top-transition"
+				scrollable
+			>
+				<v-card tile class="black">
+				<v-card-text class="px-2">
+					<v-list 
+						style="padding-top:45px;" 
+						class="transparent"
+					>
+						<v-list-item
+							v-for="item in menu"
+							:key="item.index"
+							@click="menuLink(item.link, item.hash), dialog = false"
+							@mouseover="item.hover = true" 
+							@mouseout="item.hover = false"
+							style="border-bottom:rgb(200,200,200,0.15) 1px solid;"
+						>
+							<v-list-item-content>
+							<v-list-item-title class="grey--text text--lighten-2">{{ item.title }}</v-list-item-title>
+							</v-list-item-content>
+						</v-list-item>
+					</v-list>
+				</v-card-text>
+
+				<div style="flex: 1 1 auto;"></div>
+				</v-card>
+			</v-dialog>
 		</div>
     </v-app>
 </template>
 
 <script>
-// import Cookies from 'js-cookie';
-import login from './components/login.vue'
-
 export default {
 	components: {
-		login
 	},
     data(){
         return{
+			scrollPosition: null,
+			dialog: false,
+			debounce: false,
 			permanent: true,
 			expandUser: false,
 			drawer: null,
@@ -260,21 +162,31 @@ export default {
             menu: [
 				{
 					title: 'Home',
-					icon: 'mdi-view-dashboard',
+					icon: 'mdi-home',
 					link: '/',
-					hueRotate: 0
+					hash: '#home',
+					hover: false,
 				},
 				{
-					title: 'Skill',
-					icon: 'mdi-hammer-screwdriver',
-					link: '/skills',
-					hueRotate: 120
-				},
-				{
-					title: 'Projects',
+					title: 'Web',
 					icon: 'mdi-application',
-					link: '/projects',
-					hueRotate: 240
+					link: '/',
+					hash: '#web',
+					hover: false,
+				},
+				{
+					title: 'Illustration',
+					icon: 'mdi-brush',
+					link: '/',
+					hash: '#illustration',
+					hover: false,
+				},
+				{
+					title: 'Contact',
+					icon: 'mdi-brush',
+					link: '/',
+					hash: '#contact',
+					hover: false,
 				},
 			],
 			hueRotate: 0,
@@ -285,12 +197,27 @@ export default {
 		}
 	},
 	mounted(){
+		window.addEventListener('scroll', this.updateScroll);
 	},
     methods: {
-		menuLink (link, hue) {
+		openDialog() {
+			this.dialog = true
+			this.debounce = true;
+      
+			setTimeout(() => {
+				this.debounce = false;
+			}, 500);
+		},
+		updateScroll() {
+			this.scrollPosition = window.scrollY
+		},
+		menuLink (link, hashID) {
 			if (this.$route.path != link) {
 				this.$router.push({path: link})
-				this.hueRotate = hue
+			}
+			if (hashID) {
+				// this.$router.push({path: link, hash: hashID})
+				this.$vuetify.goTo(hashID, {offset: 45, easing:'easeInOutCubic'})
 			}
 		},
 		drawervalue (value) {
@@ -311,9 +238,6 @@ export default {
 				return newName
 			} 
 		},
-		randomNum: function() {
-			return Math.floor(Math.random() * 999) + 51;
-		}
 	}
 }
 </script>
@@ -325,34 +249,24 @@ export default {
 		bottom: 10px;
 		right: 50px;
 	}
-	@keyframes blur {
-		from {
-			filter: blur(0px);
-			-webkit-filter: blur(0px);
-		}
-		to {
-			filter: blur(8px);
-			-webkit-filter: blur(8px);
-		}
-	}
 	.brightness {
-	-webkit-animation: brightness 4s both infinite;
-			animation: brightness 4s both infinite;
+	-webkit-animation: brightness 3s both infinite;
+			animation: brightness 3s both infinite;
 	}
 	@keyframes brightness {
 		0%,
 		93%,
 		100% {
-			filter:brightness(100%);
-			-webkit-filter: brightness(100%);
+			filter:brightness(90%);
+			-webkit-filter: brightness(90%);
 		}
 		90%,
 		96% {
-			filter:brightness(120%);
-			-webkit-filter: brightness(120%);
+			filter:brightness(110%);
+			-webkit-filter: brightness(110%);
 		}
 	}
-
+/* 
 	.scale-up-center {
 		-webkit-animation: scale-up-center 1s cubic-bezier(0.390, 0.575, 0.565, 1.000) alternate infinite;
 		animation: scale-up-center 1s cubic-bezier(0.390, 0.575, 0.565, 1.000) alternate infinite;
@@ -432,14 +346,7 @@ export default {
 		-webkit-transform: translate(0);
 				transform: translate(0);
 	}
-	}
-
-	.mobile-size-fix{
-		-webkit-transform: scale(1.3);
-				transform: scale(1.3);
-		-webkit-transform-origin: 77% 100%;
-				transform-origin: 77% 100%;
-	}
+	} */
 	.slide-fade-enter-active {
 		transition: all .2s ease;
 	}
@@ -450,10 +357,9 @@ export default {
 		transform: translateY(10px);
 		opacity: 0;
 	}
-
-
-
-
+	a:hover {
+		text-decoration: underline;
+	}
 	/* .fixed-tabs-bar .v-tabs__bar {
 		position: -webkit-sticky;
 		position: sticky;
