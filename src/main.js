@@ -4,6 +4,8 @@ import App from './App.vue'
 import router from './plugins/router'
 import vuetify from './plugins/vuetify'
 import Cookies from 'js-cookie'
+import VueParticles from 'vue-particles'
+Vue.use(VueParticles)
 
 Vue.config.productionTip = false
 

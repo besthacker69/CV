@@ -1,8 +1,6 @@
 <template>
     <v-app>
-		<div
-		
-		>
+		<div>
 			<div 
 				class="d-flex flex-row align-center px-4" 
 				style="width:100vw; border-bottom:1px solid; border-color:rgb(200,200,200,0.15); position:fixed; height:45px; z-index:9999;"
@@ -58,35 +56,13 @@
 				</v-tabs>
 			</div>
 			<div>
-			<!-- <v-container 
-				v-if="user.name"
-				fluid
-			>
-				<v-row>
-					<v-col
-						class=""
-					> -->
-						<!-- <div class="py-0 px-2 d-flex flex-row" style="width:300px;">
-							<span class="text-overline">Slide Me:</span>
-							<v-slider
-								dense
-								max="360"
-								min="0"
-								v-model="hueRotate"
-								class="px-2"
-								hide-details
-							></v-slider>
-						</div> -->
-						<transition name="slide-fade" mode="out-in">
-							<router-view
-								style=""
-								@getSnackbar="getSnackbar"
-								:user="user"
-							/>
-						</transition>
-					<!-- </v-col>
-				</v-row>
-			</v-container> -->
+				<transition name="slide-fade" mode="out-in">
+					<router-view
+						style=""
+						@getSnackbar="getSnackbar"
+						:user="user"
+					/>
+				</transition>
 			</div>
 			<v-snackbar
 				light
@@ -255,98 +231,20 @@ export default {
 	}
 	@keyframes brightness {
 		0%,
+		65%,
+		75%,
 		93%,
 		100% {
 			filter:brightness(90%);
 			-webkit-filter: brightness(90%);
 		}
+		70%,
 		90%,
 		96% {
 			filter:brightness(110%);
 			-webkit-filter: brightness(110%);
 		}
 	}
-/* 
-	.scale-up-center {
-		-webkit-animation: scale-up-center 1s cubic-bezier(0.390, 0.575, 0.565, 1.000) alternate infinite;
-		animation: scale-up-center 1s cubic-bezier(0.390, 0.575, 0.565, 1.000) alternate infinite;
-	}
-	@-webkit-keyframes scale-up-center {
-		0% {
-			-webkit-transform: scale(1);
-					transform: scale(1);
-		}
-		100% {
-			-webkit-transform: scale(1.003, 1.005);
-					transform: scale(1.003, 1.005);
-		}
-	}
-	@keyframes scale-up-center {
-		0% {
-			-webkit-transform: scale(1);
-					transform: scale(1);
-		}
-		100% {
-			-webkit-transform: scale(1.005, 1.01);
-					transform: scale(1.005, 1.01);
-		}
-	}
-	.vibrate {
-	-webkit-animation: vibrate 0.3s linear infinite both;
-			animation: vibrate 0.3s linear infinite both;
-	}
-	@keyframes vibrate {
-	0% {
-		-webkit-transform: translate(0);
-				transform: translate(0);
-	}
-	20% {
-		-webkit-transform: translate(0, 1px);
-				transform: translate(0, 1px);
-	}
-	40% {
-		-webkit-transform: translate(0, 0);
-				transform: translate(0, 0);
-	}
-	60% {
-		-webkit-transform: translate(1px, 1px);
-				transform: translate(1px, 1px);
-	}
-	80% {
-		-webkit-transform: translate(1px, 0);
-				transform: translate(1px, 0);
-	}
-	100% {
-		-webkit-transform: translate(0);
-				transform: translate(0);
-	}
-	}
-	@-webkit-keyframes vibrate {
-	0% {
-		-webkit-transform: translate(0);
-				transform: translate(0);
-	}
-	20% {
-		-webkit-transform: translate(0, 1px);
-				transform: translate(0, 1px);
-	}
-	40% {
-		-webkit-transform: translate(0, 0);
-				transform: translate(0, 0);
-	}
-	60% {
-		-webkit-transform: translate(1px, 1px);
-				transform: translate(1px, 1px);
-	}
-	80% {
-		-webkit-transform: translate(1px, 0);
-				transform: translate(1px, 0);
-	}
-	100% {
-		-webkit-transform: translate(0);
-				transform: translate(0);
-	}
-	} */
 	.slide-fade-enter-active {
 		transition: all .2s ease;
 	}
@@ -360,10 +258,13 @@ export default {
 	a:hover {
 		text-decoration: underline;
 	}
-	/* .fixed-tabs-bar .v-tabs__bar {
-		position: -webkit-sticky;
-		position: sticky;
-		top: 4rem;
-		z-index: 2;
-	} */
+	body {
+		background-color: black;
+		font-family: cursive;
+	}
+	.glow {
+		color: #fff;
+		text-align: center;
+		text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px #e60073, 0 0 40px #e60073, 0 0 60px #e60073, 0 0 80px #e60073, 0 0 160px #e60073;
+	}
 </style>
