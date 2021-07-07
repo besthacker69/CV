@@ -1,5 +1,5 @@
 <template>
-    <v-app>
+    <v-app style="background:none !important;">
 		<div>
 			<div 
 				class="d-flex flex-row align-center px-4" 
@@ -61,6 +61,7 @@
 						style=""
 						@getSnackbar="getSnackbar"
 						:user="user"
+						:scrollPosition="scrollPosition"
 					/>
 				</transition>
 			</div>
@@ -245,6 +246,20 @@ export default {
 			-webkit-filter: brightness(110%);
 		}
 	}
+	.fadeTransition {
+	-webkit-animation: fadeTransition 1s both;
+			animation: fadeTransition 1s both;
+	}
+	@keyframes fadeTransition {
+		0% {
+			filter:fadeTransition(90%);
+			-webkit-filter: fadeTransition(90%);
+		}
+		100% {
+			filter:fadeTransition(110%);
+			-webkit-filter: fadeTransition(110%);
+		}
+	}
 	.slide-fade-enter-active {
 		transition: all .2s ease;
 	}
@@ -255,9 +270,30 @@ export default {
 		transform: translateY(10px);
 		opacity: 0;
 	}
+	.fade-enter-active {
+		transition: opacity 1s ease-in-out;
+	}
+
+	.fade-enter-to {
+		opacity: 1;
+	}
+
+	.fade-enter {
+		opacity: 0;
+	}
+
+	.fade-leave {
+		opacity: 1;
+	}
+
+	.fade-leave-to {
+		opacity: 0;
+	}
+	
 	a:hover {
 		text-decoration: underline;
 	}
+
 	body {
 		background-color: black;
 		font-family: cursive;

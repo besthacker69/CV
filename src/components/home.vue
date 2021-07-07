@@ -1,19 +1,25 @@
 <template>
 	<div>
-		<div
-			style="background:url('./back.png') right; 
-			-o-background-size: cover; -moz-background-size: cover;
-			-webkit-background-size:cover; background-size: cover; 
-			"
-		>
-			<div :style="{'filter': 'hue-rotate('+hueRotate+'deg)'}">
+		<transition name="fade">
+			<div
+				style="
+				-o-background-size: cover; -moz-background-size: cover;
+				-webkit-background-size:cover; background-size: cover; 
+				position:fixed; height:100vh; width:100vw; z-index:-1;
+				background-position:center center;"
+				v-bind:style="{ 'background-image': 'url(' + backImg + ')' }"
+				:key="backImg"
+			>
+			</div>
+		</transition>
+		<div :style="{'filter': 'hue-rotate('+hueRotate+'deg)'}">
 				<vue-particles 
 					color="#ffb8d2" 
 					linesColor="#ff47a3" 
-					:particlesNumber="60"
+					:particlesNumber="70"
 					:lineOpacity="0.9"
 					:particleOpacity="0.9"
-					:particleSize="5"
+					:particleSize="8"
 					style="width:100%; height:600px; position:absolute;"
 					:style="$vuetify.breakpoint.xs ? 'margin-top:20px; height:640px;':'margin-top:100px; height:700px;'"
 					class="pt-8"
@@ -97,13 +103,8 @@
 					</v-col>
 				</v-row>
 			</v-container>
-		</div>
 		
-		<div
-			style="background:url('./back2.png') right; 
-			-o-background-size: cover; -moz-background-size: cover;
-			-webkit-background-size:cover; background-size: cover;"
-		>
+		<v-img eager src="./build/back2.jpg" height="250" class="d-flex flex-row align-center justufy-center">
 			<v-container>
 				<v-row 
 					id="web"
@@ -134,116 +135,9 @@
 					</v-col>
 				</v-row>
 			</v-container>
-		</div>
-		<div
-			style="background:url('./back4.png') right; 
-			-o-background-size: cover; -moz-background-size: cover;
-			-webkit-background-size:cover; background-size: cover;"
-		>
+		</v-img>
+
 			<v-container>
-				<!-- <v-row 
-					class="white d-flex align-center justify-center" 
-					style="overflow:hidden"
-					:class="$vuetify.breakpoint.xs ? 'py-1 px-0':'pa-2'"
-				>
-					<v-col 
-						cols="12"
-						sm="6"
-						:class="$vuetify.breakpoint.xs ? 'py-1 px-0':'pa-1'"
-					>
-						<div 
-							class="grey lighten-4 black--text d-flex flex-column align-center justify-space-between" 
-							:style="$vuetify.breakpoint.xs || $vuetify.breakpoint.sm ? 'height:520px;':'height:640px;'"
-							style="overflow:hidden;"
-						>
-							<div class="d-flex flex-column align-center justify-center py-8">
-								<h1 class="text-center pt-12 pb-4" style="font-size:30px;">Web Development Projects</h1>
-								
-								<span class="text-center pb-2" style="font-size:16px; max-width:300px;">
-									Vue.js. Vuetify, Laravel, Native Javascript, PHP, HTML and CSS.
-								</span>
-								<span>
-									<a class="blue--text text--darken-1">View Projects</a>
-								</span>
-							</div>
-							<v-img
-								eager
-								:contain="!$vuetify.breakpoint.xs"
-								src="3.png"
-								:max-height="$vuetify.breakpoint.xs ? '400' : '470'"
-								:min-height="$vuetify.breakpoint.xs ? '380' : '450'"
-							>
-								<template v-slot:placeholder>
-									<v-row
-										class="fill-height ma-0"
-										align="center"
-										justify="center"
-									>
-										<v-progress-circular
-										indeterminate
-										color="grey lighten-5"
-										></v-progress-circular>
-									</v-row>
-								</template>
-							</v-img>
-						</div>
-					</v-col>
-					<v-col
-						cols="12"
-						sm="6"
-						:class="$vuetify.breakpoint.xs ? 'py-1 px-0':'pa-1'"
-					>
-						<div 
-							class="black white--text d-flex flex-column align-center justify-space-between" 
-							:style="$vuetify.breakpoint.xs || $vuetify.breakpoint.sm ? 'height:520px;':'height:640px;'"
-							style="overflow:hidden"
-						>
-							<div class="d-flex flex-column align-center justify-center py-8">
-								<h1 class="text-center pt-12 pb-4" style="font-size:30px;">Design, Painting and Animation</h1>
-								
-								<span class="text-center pb-2" style="font-size:16px; max-width:300px;">
-									Adobe Photoshop, After Effects, Premiere, Indesign, Blender, Zbrush.
-								</span>
-								<span>
-									<a class="blue--text text--darken-1">View Illustration</a>
-								</span>
-							</div>
-							<v-img
-								eager
-								:contain="!$vuetify.breakpoint.xs"
-								src="6.png"
-								:max-height="$vuetify.breakpoint.xs ? '400' : '470'"
-								:min-height="$vuetify.breakpoint.xs ? '380' : '450'"
-							>
-								<template v-slot:placeholder>
-									<v-row
-										class="fill-height ma-0"
-										align="center"
-										justify="center"
-									>
-										<v-progress-circular
-										indeterminate
-										color="grey lighten-5"
-										></v-progress-circular>
-									</v-row>
-								</template>
-							</v-img>
-						</div>
-					</v-col>
-				</v-row> -->
-				<!-- <v-row 
-					class="white d-flex align-center justify-center" 
-				>
-					<v-col
-						cols="12"
-						:class="$vuetify.breakpoint.xs ? 'py-1 px-0':'pa-1'"
-						:style="$vuetify.breakpoint.xs || $vuetify.breakpoint.sm ? 'min-height:70px;':'min-height:90px;'"
-
-					>
-						<h2 class="text-center black--text pa-4" :style="$vuetify.breakpoint.xs || $vuetify.breakpoint.sm ? 'font-size:36px; font-weight:500;':'font-size:48px; font-weight:500;'">Web Projects</h2>
-
-					</v-col>
-				</v-row> -->
 				<v-row 
 					class="white--text d-flex align-center justify-center brightness" 
 					style="overflow:hidden"
@@ -375,174 +269,9 @@
 							</div>
 						</transition>
 					</v-col>
-					<!-- <v-col 
-						cols="12"
-						md="6"
-						:class="$vuetify.breakpoint.xs ? 'py-1 px-0':'pa-1'"
-					>
-						<div 
-							class="px-2 d-flex flex-column align-center justify-space-between" 
-							:style="$vuetify.breakpoint.xs || $vuetify.breakpoint.sm ? 'height:520px;':'height:640px;'"
-						>
-							<div class="d-flex flex-column align-center justify-center pt-6 pb-4">
-								<h1 class="text-center pt-8 pb-0" style="font-size:36px;">Puan Botanicals</h1>
-
-								<span class="text-center pb-2" style="font-size:15px; max-width:300px;">
-									Front-End Developer
-								</span>
-								
-								<span class="text-center pb-4" style="font-size:12px; max-width:300px;">
-									Vue.js. Vuetify, Axios , Javascript, PHP, HTML and CSS.
-								</span>
-								
-								<ul style="font-size:16px; max-width:300px;">
-									<li>Online kratom store.</li>
-									<li>Product lists and cart.</li>
-									<li>Shipping and checkout.</li>
-								</ul>
-								<span>
-									<a class="blue--text text--darken-1">View Project Details</a>
-								</span>
-							</div>
-							<v-img
-								eager
-								contain
-								src="./build/puan_banner.png"
-								class="mb-12"
-								:max-height="$vuetify.breakpoint.xs ? '200' : $vuetify.breakpoint.sm ? '250' : '330'"
-							>
-								<template v-slot:placeholder>
-									<v-row
-										class="fill-height ma-0"
-										align="center"
-										justify="center"
-									>
-										<v-progress-circular
-										indeterminate
-										color="grey lighten-5"
-										></v-progress-circular>
-									</v-row>
-								</template>
-							</v-img>
-						</div>
-					</v-col> -->
 				</v-row>
 			</v-container>
-		</div>
-		<!-- <v-container>
-			<v-row 
-				class="white black--text d-flex align-center justify-center" 
-				style="overflow:hidden"
-				:class="$vuetify.breakpoint.xs ? 'py-1 px-0':'pa-2 pt-0'"
-			>
-				<v-col 
-					cols="12"
-					md="6"
-					:class="$vuetify.breakpoint.xs ? 'py-1 px-0':'pa-1'"
-				>
-					<div 
-						class="grey lighten-5 px-2 transparent d-flex flex-column align-center justify-space-between" 
-						:style="$vuetify.breakpoint.xs || $vuetify.breakpoint.sm ? 'height:520px;':'height:640px;'"
-						style="overflow:hidden;"
-					>
-						<div class="d-flex flex-column align-center justify-center pt-6 pb-4">
-							<h1 class="text-center pt-8 pb-0" style="font-size:36px;">CM ACC</h1>
-							<span class="text-center pb-2" style="font-size:15px; max-width:300px;">
-								Front-End Developer, Product Designer
-							</span>
-							
-							<span class="text-center pb-4" style="font-size:12px; max-width:300px;">
-								Vue.js. Vuetify, Axios , Javascript, PHP, HTML and CSS.
-							</span>
-							
-							<ul class="pb-2" style="font-size:16px; max-width:300px;">
-								<li>Accounting Software.</li>
-								<li>Product purchasing, sales and return.</li>
-								<li>Cash, debt and receivables.</li>
-							</ul>
-							<span>
-								<a class="blue--text text--darken-1">View Project Details</a>
-							</span>
-						</div>
-						<v-img
-							eager
-							contain
-							src="./build/acc_banner.png"
-							class="mb-12"
-							:max-height="$vuetify.breakpoint.xs ? '200' : $vuetify.breakpoint.sm ? '250' : '330'"
-						>
-							<template v-slot:placeholder>
-								<v-row
-									class="fill-height ma-0"
-									align="center"
-									justify="center"
-								>
-									<v-progress-circular
-									indeterminate
-									color="grey lighten-5"
-									></v-progress-circular>
-								</v-row>
-							</template>
-						</v-img>
-					</div>
-				</v-col>
-				<v-col 
-					cols="12"
-					md="6"
-					:class="$vuetify.breakpoint.xs ? 'py-1 px-0':'pa-1'"
-				>
-					<div 
-						class="grey lighten-5 px-2 d-flex flex-column align-center justify-space-between" 
-						:style="$vuetify.breakpoint.xs || $vuetify.breakpoint.sm ? 'height:520px;':'height:640px;'"
-						style="overflow:hidden;"
-					>
-						<div class="d-flex flex-column align-center justify-center pt-6 pb-4">
-							<h1 class="text-center pt-8 pb-0" style="font-size:36px;">CM Digital</h1>
-							<span class="text-center pb-2" style="font-size:15px; max-width:300px;">
-								Front-End Developer, Product Designer
-							</span>
-							
-							<span class="text-center pb-4" style="font-size:12px; max-width:300px;">
-								Vue.js. Vuetify, Javascript, HTML and CSS.
-							</span>
-							
-							<ul class="pb-2" style="font-size:16px; max-width:300px;">
-								<li>Software house.</li>
-								<li>Marketing and Advertising purposes.</li>
-							</ul>
-							<span>
-								<a class="blue--text text--darken-1">View Project Details</a>
-							</span>
-						</div>
-						<v-img
-							eager
-							contain
-							src="./build/cmd_banner.png"
-							class="mb-12"
-							:max-height="$vuetify.breakpoint.xs ? '200' : $vuetify.breakpoint.sm ? '250' : '330'"
-						>
-							<template v-slot:placeholder>
-								<v-row
-									class="fill-height ma-0"
-									align="center"
-									justify="center"
-								>
-									<v-progress-circular
-									indeterminate
-									color="grey lighten-5"
-									></v-progress-circular>
-								</v-row>
-							</template>
-						</v-img>
-					</div>
-				</v-col>
-			</v-row>
-		</v-container> -->
-		<div
-		style="background:url('./back2.png') right; 
-			-o-background-size: cover; -moz-background-size: cover;
-			-webkit-background-size:cover; background-size: cover;"
-		>
+		<v-img eager src="./build/back2.jpg" height="250" class="d-flex flex-row align-center justufy-center">
 			<v-container>
 				<v-row
 					id="illustration"
@@ -573,18 +302,12 @@
 					</v-col>
 				</v-row>
 			</v-container>
-		</div>
-		<div 
-			style="background:url('./back3.png') right; 
-			-o-background-size: cover; -moz-background-size: cover;
-			-webkit-background-size:cover; background-size: cover; background-position:top;"
-			:style="$vuetify.breakpoint.xs || $vuetify.breakpoint.sm ? 'min-height:640px;':'min-height:720px;'"
-			class="d-flex flex-column align-center justify-center"
-		>
+		</v-img>
 			<v-container>
 				<v-row
 					class="d-flex align-center" 
 					:class="$vuetify.breakpoint.xs ? 'py-2 px-0 flex-row':'pa-2 flex-row-reverse'"
+					:style="$vuetify.breakpoint.xs || $vuetify.breakpoint.sm ? 'min-height:720px;':'min-height:800px;'"
 				>
 					<v-col 
 						cols="12"
@@ -598,7 +321,6 @@
 							id="gallery-pic"
 						>
 							<v-img
-								eager
 								contain
 								:src="gallery_pic"
 							>
@@ -638,12 +360,12 @@
 								>
 									<v-hover v-slot="{ hover }">
 										<v-img
-											:src="`./illus_${11-n}.png`"
+											:src="`./build/illus_${11-n}.jpg`"
 											aspect-ratio="1"
 											:style="hover ? 'filter: brightness(0.8);':''"
 											style="cursor:pointer;"
-											v-on:click="gallery_pic = `./illus_${11-n}.png`"
-											class="grey lighten-2"
+											v-on:click="gallery_pic = `./build/illus_${11-n}.jpg`"
+											class="grey darken-4"
 										>
 											<template v-slot:placeholder>
 											<v-row
@@ -665,8 +387,7 @@
 					</v-col>
 				</v-row>
 			</v-container>
-		</div>
-		<div class="grey darken-4">
+		<div class="grey darken-4" style="z-index:1;">
 			<v-container>
 				<v-row
 					id="contact"
@@ -750,10 +471,11 @@
 export default {
 	components: {
 	},
-	props: ['drawer', 'product'],
+	props: ['user', 'scrollPosition'],
 	data () {
 		return {
-			gallery_pic: './illus_10.png',
+			backImg: './build/back.jpg',
+			gallery_pic: './build/illus_10.jpg',
 			hueRotate: 255,
 			items: [
 				{
@@ -845,6 +567,35 @@ export default {
 			// this.$cookies.remove('password')
 			// this.$cookies.remove('email')
 			// this.$router.push({path: '/login'})
+		}
+	},
+	watch: {
+		scrollPosition: function (val) {
+			if (this.$vuetify.breakpoint.xs) {
+				if (val < 350) {
+				this.backImg = './build/back.jpg'
+				} else if (val < 1420) {
+					this.backImg = './build/back4.jpg'
+				} else {
+					this.backImg = './build/back3.jpg'
+				}
+			} else if (this.$vuetify.breakpoint.sm) {
+				if (val < 420) {
+				this.backImg = './build/back.jpg'
+				} else if (val < 1450) {
+					this.backImg = './build/back4.jpg'
+				} else {
+					this.backImg = './build/back3.jpg'
+				}
+			} else {
+				if (val < 620) {
+				this.backImg = './build/back.jpg'
+				} else if (val < 1600) {
+					this.backImg = './build/back4.jpg'
+				} else {
+					this.backImg = './build/back3.jpg'
+				}
+			}	
 		}
 	},
 	computed: {
