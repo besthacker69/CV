@@ -103,8 +103,25 @@
 					</v-col>
 				</v-row>
 			</v-container>
-		
-		<v-img eager src="./build/back2.jpg" height="250" class="d-flex flex-row align-center justufy-center">
+		<v-img
+			id="web"
+			eager
+			src="./build/div.png" height="250" 
+			class="brightness fadeTransition"
+			:style="{'filter': 'hue-rotate('+hueRotate+'deg)'}"
+		>
+			<v-img 
+				eager 
+				contain 
+				src="./build/web_sign.png" height="250" 
+				class="brightness fadeTransition"
+				:style="{'filter': 'hue-rotate('+hueRotate+'deg)'}"
+			>
+			</v-img>
+		</v-img>
+
+
+		<!-- <v-img eager src="./build/back2.jpg" height="250" class="d-flex flex-row align-center justufy-center">
 			<v-container>
 				<v-row 
 					id="web"
@@ -118,7 +135,6 @@
 					>
 						<div 
 							class="pa-0 d-flex flex-column align-center justify-center fadeTransition"
-							:style="{'filter': 'hue-rotate('+hueRotate+'deg)'}"
 						>
 							<h1 
 								class="text-center pa-2 glow brightness" 
@@ -135,14 +151,14 @@
 					</v-col>
 				</v-row>
 			</v-container>
-		</v-img>
+		</v-img> -->
 
 			<v-container>
 				<v-row 
 					class="white--text d-flex align-center justify-center brightness" 
 					style="overflow:hidden"
 					:class="$vuetify.breakpoint.xs ? 'py-12 px-0':'pa-2'"
-					:style="$vuetify.breakpoint.xs || $vuetify.breakpoint.sm ? 'min-height:600px;':'min-height:800px;'"
+					:style="$vuetify.breakpoint.xs || $vuetify.breakpoint.sm ? 'min-height:600px;':'min-height:750px;'"
 				>
 					<v-col 
 						cols="12"
@@ -271,7 +287,24 @@
 					</v-col>
 				</v-row>
 			</v-container>
-		<v-img eager src="./build/back2.jpg" height="250" class="d-flex flex-row align-center justufy-center">
+
+		<v-img 
+			eager
+			src="./build/div.png" height="250" 
+			class="brightness fadeTransition"
+			:style="{'filter': 'hue-rotate('+hueRotate+'deg)'}"
+		>
+			<v-img 
+				id="illustration"
+				eager 
+				contain 
+				src="./build/illus_sign.png" height="250" 
+				class="brightness fadeTransition"
+				:style="{'filter': 'hue-rotate('+hueRotate+'deg)'}"
+			>
+			</v-img>
+		</v-img>
+		<!-- <v-img eager src="./build/back2.jpg" height="250" class="d-flex flex-row align-center justufy-center">
 			<v-container>
 				<v-row
 					id="illustration"
@@ -302,7 +335,7 @@
 					</v-col>
 				</v-row>
 			</v-container>
-		</v-img>
+		</v-img> -->
 			<v-container>
 				<v-row
 					class="d-flex align-center" 
@@ -572,25 +605,25 @@ export default {
 	watch: {
 		scrollPosition: function (val) {
 			if (this.$vuetify.breakpoint.xs) {
-				if (val < 350) {
+				if (val < 300) {
 				this.backImg = './build/back.jpg'
-				} else if (val < 1420) {
+				} else if (val < 1400) {
 					this.backImg = './build/back4.jpg'
 				} else {
 					this.backImg = './build/back3.jpg'
 				}
 			} else if (this.$vuetify.breakpoint.sm) {
-				if (val < 420) {
+				if (val < 200) {
 				this.backImg = './build/back.jpg'
-				} else if (val < 1450) {
+				} else if (val < 1300) {
 					this.backImg = './build/back4.jpg'
 				} else {
 					this.backImg = './build/back3.jpg'
 				}
 			} else {
-				if (val < 620) {
+				if (val < 400) {
 				this.backImg = './build/back.jpg'
-				} else if (val < 1600) {
+				} else if (val < 1500) {
 					this.backImg = './build/back4.jpg'
 				} else {
 					this.backImg = './build/back3.jpg'
