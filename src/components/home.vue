@@ -14,6 +14,7 @@
 		</transition>
 		<div :style="{'filter': 'hue-rotate('+hueRotate+'deg)'}">
 				<vue-particles 
+					class="pt-8 brightness"
 					color="#ffb8d2" 
 					linesColor="#ff47a3" 
 					:particlesNumber="70"
@@ -22,7 +23,6 @@
 					:particleSize="8"
 					style="width:100%; height:600px; position:absolute;"
 					:style="$vuetify.breakpoint.xs ? 'margin-top:20px; height:640px;':'margin-top:100px; height:700px;'"
-					class="pt-8"
 					:hoverEffect="false"
 					:clickEffect="false"
 				>
@@ -103,23 +103,23 @@
 					</v-col>
 				</v-row>
 			</v-container>
-		<v-img
-			id="web"
-			eager
-			src="./build/div.png" height="250" 
-			class="brightness fadeTransition"
-			:style="{'filter': 'hue-rotate('+hueRotate+'deg)'}"
-		>
-			<v-img 
-				eager 
-				contain 
-				src="./build/web_sign.png" height="250" 
-				class="brightness fadeTransition"
+		<div class="brightness">
+			<v-img
+				id="web"
+				eager
+				src="./build/div.png" height="250" 
+				class="fadeTransition"
 				:style="{'filter': 'hue-rotate('+hueRotate+'deg)'}"
 			>
+				<v-img 
+					eager 
+					contain 
+					src="./build/web_sign.png" height="240" 
+					class="mt-3"
+				>
+				</v-img>
 			</v-img>
-		</v-img>
-
+		</div>
 
 		<!-- <v-img eager src="./build/back2.jpg" height="250" class="d-flex flex-row align-center justufy-center">
 			<v-container>
@@ -158,7 +158,7 @@
 					class="white--text d-flex align-center justify-center brightness" 
 					style="overflow:hidden"
 					:class="$vuetify.breakpoint.xs ? 'py-12 px-0':'pa-2'"
-					:style="$vuetify.breakpoint.xs || $vuetify.breakpoint.sm ? 'min-height:600px;':'min-height:750px;'"
+					:style="$vuetify.breakpoint.xs || $vuetify.breakpoint.sm ? 'min-height:600px;':'min-height:720px;'"
 				>
 					<v-col 
 						cols="12"
@@ -211,6 +211,7 @@
 												v-else
 												:key="`item-${i}`"
 												:value="item"
+												style="background-color:rgba(0,0,0,0.7)"
 											>
 												<template>
 													<v-list-item-icon>
@@ -260,8 +261,8 @@
 									</template>
 								</v-img>
 								<div 
-									class="white--text d-flex flex-column align-center justify-center pa-4"
-									style="width:95%; border-top:8px double white;"
+									class="white--text d-flex flex-column align-center justify-center pa-4 rounded-xl"
+									style="width:95%; border-top:8px double white; background-color:rgba(0,0,0,0.4)"
 								>
 									<h1 class="text-center pt-2 pb-0" style="font-size:36px;">{{model.name}}</h1>
 									<span class="text-center pb-2" style="font-size:15px; max-width:300px;">
@@ -288,22 +289,23 @@
 				</v-row>
 			</v-container>
 
-		<v-img 
-			eager
-			src="./build/div.png" height="250" 
-			class="brightness fadeTransition"
-			:style="{'filter': 'hue-rotate('+hueRotate+'deg)'}"
-		>
+		<div class="brightness">
 			<v-img 
-				id="illustration"
-				eager 
-				contain 
-				src="./build/illus_sign.png" height="250" 
-				class="brightness fadeTransition"
+				eager
+				src="./build/div.png" height="250" 
+				class="fadeTransition"
 				:style="{'filter': 'hue-rotate('+hueRotate+'deg)'}"
 			>
+				<v-img 
+					id="illustration"
+					eager 
+					contain 
+					src="./build/illus_sign.png" height="240" 
+					class="mt-3"
+				>
+				</v-img>
 			</v-img>
-		</v-img>
+		</div>
 		<!-- <v-img eager src="./build/back2.jpg" height="250" class="d-flex flex-row align-center justufy-center">
 			<v-container>
 				<v-row
