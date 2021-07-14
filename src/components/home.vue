@@ -1,5 +1,6 @@
 <template>
 	<div>
+
 		<transition name="fade">
 			<div
 				style="
@@ -10,6 +11,10 @@
 				v-bind:style="{ 'background-image': 'url(' + backImg + ')' }"
 				:key="backImg"
 			>
+				<!-- Temp fix for eager loading image -->
+				<div style="background-image: url(./build/back3.jpg); visibility:hidden; width:0; height:0;"></div>
+				<div style="background-image: url(./build/back4.jpg); visibility:hidden; width:0; height:0;"></div>
+
 			</div>
 		</transition>
 		<div :style="{'filter': 'hue-rotate('+hueRotate+'deg)'}">
