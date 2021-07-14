@@ -114,8 +114,9 @@
 				<v-img 
 					eager 
 					contain 
-					src="./build/web_sign.png" height="240" 
-					class="mt-3"
+					src="./build/web_sign.png" 
+					height="240" 
+					class="ma-3"
 				>
 				</v-img>
 			</v-img>
@@ -301,7 +302,7 @@
 					eager 
 					contain 
 					src="./build/illus_sign.png" height="240" 
-					class="mt-3"
+					class="ma-3"
 				>
 				</v-img>
 			</v-img>
