@@ -538,7 +538,7 @@ export default {
 					icon:'heart',
 					role:'Product Designer',
 					subtitle: 'Exploring Front-end Technologies.',
-					desc:'A dystopic cyberpunk themed portofolio. I intended to create a simple scalable web to showcase my works, but since it`s my personal website, I`ve decided to create a different-than-standard website which i`m passionate about.',
+					desc:'A dystopic - cyberpunk themed portofolio. I intended to create a simple scalable web to showcase my works, but since it`s my personal website, I`ve decided to create a different-than-standard website that i`m passionate about.',
 					feature: [
 						'Mobile friendly and couple of cross browser compatibility workarounds.',
 						'Subtle CSS effects and neon lights are color coded using JS (Intended to give user the ability to control the colors but this would overcomplicate the UX).',
