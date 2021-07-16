@@ -534,7 +534,7 @@ export default {
 			items: [
 				{
 					name:'CV',
-					img:'pnc_banner.png',
+					img:'cv_banner.png',
 					icon:'heart',
 					role:'Product Designer',
 					subtitle: 'Exploring Front-end Technologies.',
