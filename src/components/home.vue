@@ -66,7 +66,7 @@
 								class="grey--text text--lighten-2"
 								:style="$vuetify.breakpoint.xs ? 'font-size:13px; font-weight:400;' : 'font-size:16px; font-weight:400;'"
 							>
-								CG artist and Web developer.
+								Software Engineer - Front End Focus, CG Artist.
 							</h6>
 						</div>
 					</v-col>
@@ -159,16 +159,87 @@
 			</v-container>
 		</v-img> -->
 
-			<v-container>
+			<v-container class="brightness">
 				<v-row 
-					class="white--text d-flex align-center justify-center brightness" 
+					class="white--text d-flex align-center justify-center" 
 					style="overflow:hidden"
 					:class="$vuetify.breakpoint.xs ? 'py-12 px-0':'pa-2'"
-					:style="$vuetify.breakpoint.xs || $vuetify.breakpoint.sm ? 'min-height:600px;':'min-height:720px;'"
+					:style="$vuetify.breakpoint.xs || $vuetify.breakpoint.sm ? 'min-height:1080px;':'min-height:900px;'"
 				>
 					<v-col 
 						cols="12"
-						md="6"
+						md="7"
+						:class="$vuetify.breakpoint.xs ? 'py-1 px-0':'pa-1'"
+					>
+						<transition name="slide-fade" mode="out-in">
+							<div 
+								class="px-2 d-flex flex-column align-center justify-center" 
+								style="overflow:hidden;"
+								:key="model.name"
+							>
+								<v-img
+									eager
+									contain
+									:src="`./build/${model.img}`"
+									class="mb-4"
+									:max-height="$vuetify.breakpoint.xs ? '200' : $vuetify.breakpoint.sm ? '250' : '330'"
+								>
+									<template v-slot:placeholder>
+										<v-row
+											class="fill-height ma-0"
+											align="center"
+											justify="center"
+										>
+											<v-progress-circular
+											indeterminate
+											color="grey lighten-5"
+											></v-progress-circular>
+										</v-row>
+									</template>
+								</v-img>
+
+								<v-card
+									dark
+									class="white--text d-flex flex-column align-center justify-center pa-4 rounded-xl"
+									style="width:90%;"
+								>
+									<v-card-title>{{model.name}}</v-card-title>
+									<v-card-subtitle>
+										{{model.role}} - {{model.subtitle}}
+									</v-card-subtitle>
+									<!-- <span class="text-center pb-4" style="font-size:12px; max-width:300px;">
+										Vue.js. Vuetify, Axios , Laravel, Javascript, PHP, HTML and CSS.
+									</span> -->
+									<v-divider style="width:100%;"></v-divider>
+									<div 
+										class='mb-2' 
+										style="max-height:200px; overflow: auto;"
+										:style="$vuetify.breakpoint.xs ? 'max-height:300px;': 'max-height:200px;'"
+									>
+										<v-card-text class="text-subtitle-2">
+											{{model.desc}}
+										</v-card-text>
+										<v-card-text>
+											<ul class="pb-8">
+												<li 
+													v-for="(item, i) in model.feature"
+													v-bind:key="i"
+												>
+													{{ item }}
+												</li>
+											</ul>
+										</v-card-text>
+									</div>
+									<span>
+										<!-- <a class="blue--text text--darken-1">View Project Details</a> -->
+									</span>
+								</v-card>
+							</div>
+						</transition>
+					</v-col>
+					<v-col 
+						cols="12"
+						md="5"
 						:class="$vuetify.breakpoint.xs ? 'py-1 px-0':'pa-1'"
 						
 					>
@@ -195,7 +266,6 @@
 						</v-tabs> -->
 						
 						<v-card
-							flat
 							class="mx-auto pa-4"
 							color="transparent"
 							max-width="500"
@@ -225,7 +295,7 @@
 													</v-list-item-icon>
 													<v-list-item-content>
 														<v-list-item-title v-text="item.name"></v-list-item-title>
-														<v-list-item-subtitle v-text="item.desc[0]" class="grey--text text--darken-1"></v-list-item-subtitle>
+														<v-list-item-subtitle v-text="item.subtitle" class="grey--text text--darken-1"></v-list-item-subtitle>
 													</v-list-item-content>
 												</template>
 											</v-list-item>
@@ -234,63 +304,6 @@
 								</v-list>
 							</div>
 						</v-card>
-					</v-col>
-					<v-col 
-						cols="12"
-						md="6"
-						:class="$vuetify.breakpoint.xs ? 'py-1 px-0':'pa-1'"
-					>
-						<transition name="slide-fade" mode="out-in">
-							<div 
-								class="px-2 d-flex flex-column align-center justify-center" 
-								style="overflow:hidden;"
-								:key="model.name"
-							>
-								<v-img
-									eager
-									contain
-									:src="`./build/${model.img}`"
-									class="mb-4"
-									:max-height="$vuetify.breakpoint.xs ? '200' : $vuetify.breakpoint.sm ? '250' : '330'"
-								>
-									<template v-slot:placeholder>
-										<v-row
-											class="fill-height ma-0"
-											align="center"
-											justify="center"
-										>
-											<v-progress-circular
-											indeterminate
-											color="grey lighten-5"
-											></v-progress-circular>
-										</v-row>
-									</template>
-								</v-img>
-								<div 
-									class="white--text d-flex flex-column align-center justify-center pa-4 rounded-xl"
-									style="width:95%; border-top:8px double white; background-color:rgba(0,0,0,0.4)"
-								>
-									<h1 class="text-center pt-2 pb-0" style="font-size:36px;">{{model.name}}</h1>
-									<span class="text-center pb-2" style="font-size:15px; max-width:300px;">
-										{{model.role}}
-									</span>
-									<!-- <span class="text-center pb-4" style="font-size:12px; max-width:300px;">
-										Vue.js. Vuetify, Axios , Laravel, Javascript, PHP, HTML and CSS.
-									</span> -->
-									<ul style="font-size:14px; max-width:300px;" class="pb-8">
-										<li 
-											v-for="(item, i) in model.desc"
-											v-bind:key="i"
-										>
-											{{ item }}
-										</li>
-									</ul>
-									<span>
-										<!-- <a class="blue--text text--darken-1">View Project Details</a> -->
-									</span>
-								</div>
-							</div>
-						</transition>
 					</v-col>
 				</v-row>
 			</v-container>
@@ -348,7 +361,7 @@
 				<v-row
 					class="d-flex align-center" 
 					:class="$vuetify.breakpoint.xs ? 'py-2 px-0 flex-row':'pa-2 flex-row-reverse'"
-					:style="$vuetify.breakpoint.xs || $vuetify.breakpoint.sm ? 'min-height:720px;':'min-height:800px;'"
+					:style="$vuetify.breakpoint.xs || $vuetify.breakpoint.sm ? 'min-height:720px;':'min-height:900px;'"
 				>
 					<v-col 
 						cols="12"
@@ -520,15 +533,30 @@ export default {
 			hueRotate: 255,
 			items: [
 				{
+					name:'CV',
+					img:'pnc_banner.png',
+					icon:'heart',
+					role:'Product Designer',
+					subtitle: 'Exploring Front-end Technologies.',
+					desc:'A dystopic cyberpunk themed portofolio. I intended to create a simple scalable web to showcase my works, but since it`s my personal website, I`ve decided to create a different-than-standard website which i`m passionate about.',
+					feature: [
+						'Mobile friendly and couple of cross browser compatibility workarounds.',
+						'Subtle CSS effects and neon lights are color coded using JS (Intended to give user the ability to control the colors but this would overcomplicate the UX).',
+						'Lightweight resource, effects and assets. to ensure it can run smoother on low end devices.',
+					],
+				},
+				{
 					name:'PNC Property',
 					img:'pnc_banner.png',
 					icon:'home',
 					role: 'Full-Stack Developer',
-					desc: [
-						'Private property management.',
-						'Property details and Maps location.',
-						'PDF copies of important documents.',
-						'Rent tracking system.',
+					subtitle: 'Private property database management.',
+					desc:'App intended for real estate and land owners having trouble keeping their records of asset and documentation, where data privacy is of the utmost importance.',
+					feature: [
+						'Databases of users and their log tracks.',
+						'Information is stored privately.',
+						'Active rent tracking system, and historic records.',
+						'Copies of important documents on each record stored as images and PDF',
 					]
 				},
 				{
@@ -536,10 +564,13 @@ export default {
 					img:'acc_banner.png',
 					icon:'calculator',
 					role: 'Front-End Developer, Product Designer',
-					desc: [
-						'Accounting Software.',
+					subtitle: 'Accounting Software (Saas).',
+					desc:'Used to be a custom App intended for a poultry feeds SMEs (Small and Medium Enterprises), since the accounting flow only fits a certain niche. Team decided to repurpose it into a general accounting app.',
+					feature: [
+						'Classic Standarized Admin SPA UI for easier experience.',
 						'Product purchasing, sales and return.',
 						'Cash, debt and receivables.',
+						'Changes in product quantity and other data are connected, making user workflows faster and error free.'
 					]
 				},
 				{
@@ -547,10 +578,12 @@ export default {
 					img:'puan_banner.png',
 					icon:'leaf-maple',
 					role: 'Front-End Developer',
-					desc: [
-						'Online kratom store.',
-						'E-commerce Product lists and cart.',
-						'Shipping and checkout.',
+					subtitle: 'Kratom commerce page.',
+					desc:'Client wanted a legit simple commerce page to sell their locally grown herbs. This project was my first real project and there are many things that I could improve now. Regardless still a nice commerce store with Flat and some Material design.',
+					feature: [
+						'Flat design on home and product description',
+						'Material Design Product list and cart drawer.',
+						'Cart, Shipping and checkout APIs which sent directly on admin dashboard.',
 					]
 				},
 				{
@@ -558,9 +591,10 @@ export default {
 					img:'cmd_banner.png',
 					icon:'coffee',
 					role: 'Front-End Developer, Product Designer',
-					desc: [
-						'Software house.',
-						'Marketing and Advertising.',
+					subtitle: 'Software house.',
+					desc:'A landing homepage for digital agency and software house, run by team of developers with my role as product designer and front-end engineer.',
+					feature: [
+						'Coffee theme for a professional but relaxed experience.',
 						'Work In Progress.'
 					]
 				}
