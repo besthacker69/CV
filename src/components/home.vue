@@ -649,7 +649,7 @@ export default {
 			if (this.$vuetify.breakpoint.xs) {
 				if (val < 300) {
 				this.backImg = './build/back.jpg'
-				} else if (val < 1400) {
+				} else if (val < 1700) {
 					this.backImg = './build/back4.jpg'
 				} else {
 					this.backImg = './build/back3.jpg'
@@ -657,7 +657,7 @@ export default {
 			} else if (this.$vuetify.breakpoint.sm) {
 				if (val < 200) {
 				this.backImg = './build/back.jpg'
-				} else if (val < 1300) {
+				} else if (val < 1500) {
 					this.backImg = './build/back4.jpg'
 				} else {
 					this.backImg = './build/back3.jpg'
@@ -665,7 +665,7 @@ export default {
 			} else {
 				if (val < 400) {
 				this.backImg = './build/back.jpg'
-				} else if (val < 1500) {
+				} else if (val < 1700) {
 					this.backImg = './build/back4.jpg'
 				} else {
 					this.backImg = './build/back3.jpg'
