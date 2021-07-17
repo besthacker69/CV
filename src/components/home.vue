@@ -66,7 +66,7 @@
 								class="grey--text text--lighten-2"
 								:style="$vuetify.breakpoint.xs ? 'font-size:13px; font-weight:400;' : 'font-size:16px; font-weight:400;'"
 							>
-								Software Engineer - Front End Focus, CG Artist.
+								Web Developer - Front End Focus, CG Artist.
 							</h6>
 						</div>
 					</v-col>
@@ -551,7 +551,7 @@ export default {
 					icon:'home',
 					role: 'Full-Stack Developer',
 					subtitle: 'Private property database management.',
-					desc:'App intended for real estate and land owners having trouble keeping their records of asset and documentation, where data privacy is of the utmost importance.',
+					desc:'Property documentation webapp for real estate and land owners who are having trouble keeping track their records of asset and documentation, where data privacy is of the utmost importance.',
 					feature: [
 						'Databases of users and their log tracks.',
 						'Information is stored privately.',
