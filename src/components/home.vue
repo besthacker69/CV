@@ -61,7 +61,7 @@
 									Web Development, Vue.js and Laravel.
 								<br class="mb-1">
 									Designer, Illustrator and Animator.
-							</h6> -->
+							</h6>-->
 							<h6 
 								class="grey--text text--lighten-2"
 								:style="$vuetify.breakpoint.xs ? 'font-size:13px; font-weight:400;' : 'font-size:16px; font-weight:400;'"
