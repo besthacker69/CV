@@ -1,0 +1,45 @@
+kind: pipeline
+type: docker
+name: mcc
+
+steps:
+- name: KenImage
+  image: docker.cmdii.com/docker:latest
+  environment:
+    dockerRegistryUser:
+      from_secret: dockerRegistryUser
+    dockerRegistrySecret:
+      from_secret: dockerRegistrySecret
+  volumes:
+  - name: dockersock
+    path: /var/run
+  commands:
+    - sleep 30
+    - docker version
+    - docker login -u $dockerRegistryUser -p $dockerRegistrySecret docker.cmdii.com
+    - docker build -t docker.cmdii.com/ken:latest .
+    - docker image push docker.cmdii.com/ken:latest
+- name: deployKen
+  image: appleboy/drone-ssh
+  settings:
+    host: willychai.com
+    username: root
+    password:
+      from_secret: sshPass
+    port: 22
+    script:
+      - cd web/ken
+      - docker-compose pull
+      - docker-compose down
+      - docker-compose up -d
+
+services:
+- name: docker
+  image: docker.cmdii.com/docker:latest
+  privileged: true
+  volumes:
+  - name: dockersock
+    path: /var/run
+volumes:
+- name: dockersock
+  temp: {}
