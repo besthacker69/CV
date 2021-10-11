@@ -1,5 +1,7 @@
 <template>
     <v-app style="background:none !important;">
+		<div class="black" style="position:fixed; height:100vh; width:100vw;">
+		</div>
 		<div>
 			<div 
 				class="d-flex flex-row align-center px-4" 
