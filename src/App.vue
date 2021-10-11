@@ -1,7 +1,7 @@
 <template>
     <v-app style="background:none !important;">
 		<div>
-			<loading></loading>
+			<loading :loadingNum='loadingNum' v-if="loadingNum == 19"></loading>
 			<div 
 				class="d-flex flex-row align-center px-4" 
 				style="width:100vw; border-bottom:1px solid; border-color:rgb(200,200,200,0.15); position:fixed; height:45px; z-index:9998;"
@@ -134,6 +134,7 @@ export default {
 	},
     data(){
         return{
+			loadingNum: 20,
 			scrollPosition: null,
 			dialog: false,
 			debounce: false,

@@ -75,6 +75,7 @@
 					>
 						<v-img
 							eager
+							@load="loadingNum + 12"
 							src="./build/character.png"
 							style="transform: translate(-50px,0%)"
 							:contain="!$vuetify.breakpoint.xs"
@@ -119,8 +120,8 @@
 					eager 
 					contain 
 					src="./build/web_sign.png" 
-					height="240" 
-					class="ma-3"
+					height="200" 
+					class="mt-8"
 				>
 				</v-img>
 			</v-img>
@@ -167,7 +168,7 @@
 				>
 					<v-col 
 						cols="12"
-						md="7"
+						md="6"
 						:class="$vuetify.breakpoint.xs ? 'py-1 px-0':'pa-1'"
 					>
 						<transition name="slide-fade" mode="out-in">
@@ -181,7 +182,7 @@
 									contain
 									:src="`./build/${model.img}`"
 									class="mb-4"
-									:max-height="$vuetify.breakpoint.xs ? '200' : $vuetify.breakpoint.sm ? '250' : '330'"
+									:max-height="$vuetify.breakpoint.xs ? '200' : $vuetify.breakpoint.sm ? '250' : '300'"
 								>
 									<template v-slot:placeholder>
 										<v-row
@@ -199,11 +200,11 @@
 
 								<v-card
 									dark
-									class="white--text d-flex flex-column align-center justify-center pa-4 rounded-xl"
+									class="white--text d-flex flex-column align-center justify-center pa-4 rounded-lg"
 									style="width:90%;"
 								>
 									<v-card-title>{{model.name}}</v-card-title>
-									<v-card-subtitle>
+									<v-card-subtitle class="text-caption text-center">
 										{{model.role}} - {{model.subtitle}}
 									</v-card-subtitle>
 									<!-- <span class="text-center pb-4" style="font-size:12px; max-width:300px;">
@@ -212,8 +213,8 @@
 									<v-divider style="width:100%;"></v-divider>
 									<div 
 										class='mb-2' 
-										style="max-height:200px; overflow: auto;"
-										:style="$vuetify.breakpoint.xs ? 'max-height:300px;': 'max-height:200px;'"
+										style="overflow: auto;"
+										:style="$vuetify.breakpoint.xs ? 'max-height:300px;': 'max-height:300px;'"
 									>
 										<v-card-text class="text-subtitle-2">
 											{{model.desc}}
@@ -294,7 +295,7 @@
 													</v-list-item-icon>
 													<v-list-item-content>
 														<v-list-item-title v-text="item.name"></v-list-item-title>
-														<v-list-item-subtitle v-text="item.subtitle" class="grey--text text--darken-1"></v-list-item-subtitle>
+														<v-list-item-subtitle v-text="item.subtitle" class="text-caption grey--text text--darken-1"></v-list-item-subtitle>
 													</v-list-item-content>
 												</template>
 											</v-list-item>
@@ -318,8 +319,8 @@
 					id="illustration"
 					eager 
 					contain 
-					src="./build/illus_sign.png" height="240" 
-					class="ma-3"
+					src="./build/illus_sign.png" height="200" 
+					class="mt-8"
 				>
 				</v-img>
 			</v-img>
