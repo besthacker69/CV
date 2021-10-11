@@ -1,11 +1,10 @@
 <template>
     <v-app style="background:none !important;">
-		<div class="black" style="position:fixed; height:100vh; width:100vw;">
-		</div>
 		<div>
+			<loading></loading>
 			<div 
 				class="d-flex flex-row align-center px-4" 
-				style="width:100vw; border-bottom:1px solid; border-color:rgb(200,200,200,0.15); position:fixed; height:45px; z-index:9999;"
+				style="width:100vw; border-bottom:1px solid; border-color:rgb(200,200,200,0.15); position:fixed; height:45px; z-index:9998;"
 				:style="scrollPosition > 50 ? 'background-color:black' : 'background-color:transparent'"
 			>	
 				<v-app-bar-nav-icon 
@@ -126,8 +125,12 @@
 </template>
 
 <script>
+
+import loading from './components/loading.vue'
+
 export default {
 	components: {
+		loading
 	},
     data(){
         return{
