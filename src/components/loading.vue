@@ -1,7 +1,7 @@
 <template>
 	<div 
 		class="d-flex flex-column justify-center align-center" 
-		style="position:fixed; height:100vh; width:100vw; z-index:9999; background-color:rgba(0,0,0,0.6);"
+		style="position:fixed; height:100vh; width:100vw; z-index:9999; background-color:rgba(0,0,0,0.8);"
 	>
 		<v-card color="transparent" class="d-flex flex-column justify-center align-center pa-4" style="width:300px;">
 			<!-- <v-progress-circular

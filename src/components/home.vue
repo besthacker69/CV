@@ -11,103 +11,160 @@
 				:key="backImg"
 			>
 				<!-- Temp fix for eager loading image -->
+				<div style="background-image: url(./build/back.jpg); visibility:hidden; width:0; height:0;"></div>
 				<div style="background-image: url(./build/back3.jpg); visibility:hidden; width:0; height:0;"></div>
 				<div style="background-image: url(./build/back4.jpg); visibility:hidden; width:0; height:0;"></div>
 
 			</div>
 		</transition>
 		<div :style="{'filter': 'hue-rotate('+hueRotate+'deg)'}">
-				<vue-particles 
-					class="pt-8 brightness"
-					color="#ffb8d2" 
-					linesColor="#ff47a3" 
-					:particlesNumber="70"
-					:lineOpacity="0.9"
-					:particleOpacity="0.9"
-					:particleSize="8"
-					style="width:100%; height:600px; position:absolute;"
-					:style="$vuetify.breakpoint.xs ? 'margin-top:20px; height:640px;':'margin-top:100px; height:700px;'"
-					:hoverEffect="false"
-					:clickEffect="false"
+			<vue-particles 
+				class="pt-8 brightness"
+				color="#ffb8d2" 
+				linesColor="#ff47a3" 
+				:particlesNumber="70"
+				:lineOpacity="0.9"
+				:particleOpacity="0.9"
+				:particleSize="8"
+				style="width:100%; height:600px; position:absolute;"
+				:style="$vuetify.breakpoint.xs ? 'margin-top:20px; height:640px;':'margin-top:100px; height:700px;'"
+				:hoverEffect="false"
+				:clickEffect="false"
+			>
+			</vue-particles>
+		</div>
+		<v-container>
+			<v-row
+				id="home"
+				class="d-flex align-end justify-space-between brightness" 
+				:style="$vuetify.breakpoint.xs ? 'min-height:660px;':'min-height:800px;'"
+				style="padding-top:45px;"
+			>
+				<v-col
+					cols="12"
+					class="pa-0 d-flex flex-column justify-space-between align-center"
 				>
-				</vue-particles>
-			</div>
+					<div class="pt-8 pb-4 px-2 d-flex flex-column align-center justify-center text-center" >
+						<h4 
+							:style="$vuetify.breakpoint.xs ? 'font-size:16px;' : 'font-size:20px;'"
+							:class="$vuetify.breakpoint.xs ? 'py-2':'py-2 pb-0'"
+						>
+							Ken_Welly
+						</h4>
+						<h1 :style="$vuetify.breakpoint.xs ? 'font-size:48px; font-weight:600; line-height:52px;' : 'font-size:72px; line-height:72px;'">
+							Web and Illustration
+						</h1>
+						<h6 
+							class="grey--text text--lighten-2"
+							:style="$vuetify.breakpoint.xs ? 'font-size:13px; font-weight:400;' : 'font-size:16px; font-weight:400;'"
+						>
+							Web Developer - Full Stack, Concept Artist.
+						</h6>
+					</div>
+				</v-col>
+				<v-col
+					cols="12"
+					class="pa-0 d-flex flex-column justify-space-between align-center"
+				>
+					<v-img
+						eager
+						@load="loadingNum + 12"
+						src="./build/character.png"
+						style="transform: translate(-50px,0%)"
+						:contain="!$vuetify.breakpoint.xs"
+						:max-height="$vuetify.breakpoint.xs ? '420' : '490'"
+						:min-height="$vuetify.breakpoint.xs ? '400' : '470'"
+					>
+						<template v-slot:placeholder>
+							<v-row
+								class="fill-height ma-0"
+								align="center"
+								justify="center"
+							>
+								<v-progress-circular
+								indeterminate
+								color="grey lighten-5"
+								></v-progress-circular>
+							</v-row>
+						</template>
+					</v-img>
+					<v-img
+						eager
+						style="position:absolute; transform: translate(-50px,0%);"
+						:style="{'filter': 'hue-rotate('+hueRotate+'deg)'}"
+						class="fadeTransition"
+						:contain="!$vuetify.breakpoint.xs"
+						:max-height="$vuetify.breakpoint.xs ? '420' : '490'"
+						:min-height="$vuetify.breakpoint.xs ? '400' : '470'"
+						src="./build/glow.png"
+					/>
+				</v-col>
+			</v-row>
+		</v-container>
+		<div class="black brightness">
 			<v-container>
 				<v-row
-					id="home"
-					class="d-flex align-end justify-space-between brightness" 
-					:style="$vuetify.breakpoint.xs ? 'min-height:660px;':'min-height:800px;'"
-					style="padding-top:45px;"
+					class="white--text d-flex align-center justify-center"
+					:class="$vuetify.breakpoint.xs ? 'pa-0':'pa-4'"
 				>
 					<v-col
+						style="max-width:500px;"
 						cols="12"
-						class="pa-0 d-flex flex-column justify-space-between align-center"
+						sm="5"
 					>
-						<div class="pt-8 pb-4 px-2 d-flex flex-column align-center justify-center text-center" >
-							<h4 
-								:style="$vuetify.breakpoint.xs ? 'font-size:16px;' : 'font-size:20px;'"
-								:class="$vuetify.breakpoint.xs ? 'py-2':'py-2 pb-0'"
+						<div :class="$vuetify.breakpoint.xs ? 'pt-4 px-4': 'pa-4' ">
+							<span class="text-h4">Summary</span>
+							<v-divider style="border-color:white;"/>
+							<p class="text-caption pa-4">Full-stack Web Developer with a background in Concept design and Finance.</p>
+							
+							<span class="text-h4">Skills</span>
+							<v-divider style="border-color:white;"/>
+							<ul 
+								class=" text-caption"
+								:class="$vuetify.breakpoint.xs ? 'pt-4 px-4': 'pa-4'"
 							>
-								kanna_ken
-							</h4>
-							<h1 :style="$vuetify.breakpoint.xs ? 'font-size:48px; font-weight:600; line-height:52px;' : 'font-size:72px; line-height:72px;'">
-								Web and Illustration
-							</h1>
-							<!-- <h6 
-								class="pt-0 pb-2"
-								:style="$vuetify.breakpoint.xs ? 'font-size:12px; font-weight:400;' : 'font-size:14px; font-weight:400;'"
-							>
-									Web Development, Vue.js and Laravel.
-								<br class="mb-1">
-									Designer, Illustrator and Animator.
-							</h6>-->
-							<h6 
-								class="grey--text text--lighten-2"
-								:style="$vuetify.breakpoint.xs ? 'font-size:13px; font-weight:400;' : 'font-size:16px; font-weight:400;'"
-							>
-								Web Developer - Full Stack, CG Artist.
-							</h6>
+								<li>
+									Front-End: HTML, CSS, Javascript, Vue.js, Vuetify, Axios, Vue router, Wordpress.
+								</li>
+								<li>
+									Back-End: PHP, MySQL, Laravel.
+								</li>
+								<li>
+									Design & Illustration: Photoshop, Indesign. CorelDraw.
+								</li>
+								<li>
+									3D Design: ZBrush, Blender.
+								</li>
+								<li>
+									Video & Animation: After Effects, Premiere.
+								</li>
+								<li>
+									Finance: Bachelor of management economics, Experience as a Credit Analyst - interview and survey of prospective clients, Risk Management, Debt Collecting, and creating WebApp for documentation and reports.
+								</li>
+								<li>
+									Language: Native Indonesian, English, Basic Japanese
+								</li>
+							</ul>
 						</div>
 					</v-col>
 					<v-col
 						cols="12"
-						class="pa-0 d-flex flex-column justify-space-between align-center"
+						sm="5"
+						class="pa-0"
 					>
 						<v-img
 							eager
 							@load="loadingNum + 12"
-							src="./build/character.png"
-							style="transform: translate(-50px,0%)"
-							:contain="!$vuetify.breakpoint.xs"
-							:max-height="$vuetify.breakpoint.xs ? '420' : '490'"
-							:min-height="$vuetify.breakpoint.xs ? '400' : '470'"
+							src="./build/cv.png"
+							contain
+							:max-height="$vuetify.breakpoint.xs ? '' : '490'"
+							:min-height="$vuetify.breakpoint.xs ? '' : '470'"
 						>
-							<template v-slot:placeholder>
-								<v-row
-									class="fill-height ma-0"
-									align="center"
-									justify="center"
-								>
-									<v-progress-circular
-									indeterminate
-									color="grey lighten-5"
-									></v-progress-circular>
-								</v-row>
-							</template>
 						</v-img>
-						<v-img
-							eager
-							style="position:absolute; transform: translate(-50px,0%);"
-							:style="{'filter': 'hue-rotate('+hueRotate+'deg)'}"
-							class="fadeTransition"
-							:contain="!$vuetify.breakpoint.xs"
-							:max-height="$vuetify.breakpoint.xs ? '420' : '490'"
-							:min-height="$vuetify.breakpoint.xs ? '400' : '470'"
-							src="./build/glow.png"
-						/>
 					</v-col>
 				</v-row>
 			</v-container>
+		</div>
 		<div class="brightness">
 			<v-img
 				id="web"
@@ -406,7 +463,7 @@
 						>
 							<v-row class="py-5 px-2" style="width:100%;">
 								<v-col
-									v-for="n in 10"
+									v-for="n in 11"
 									:key="n"
 									class="d-flex child-flex pa-0 flex-column-reverse"
 									cols="3"
@@ -414,11 +471,11 @@
 								>
 									<v-hover v-slot="{ hover }">
 										<v-img
-											:src="`./build/illus_${11-n}.jpg`"
+											:src="`./build/illus_${12-n}.jpg`"
 											aspect-ratio="1"
 											:style="hover ? 'filter: brightness(0.8);':''"
 											style="cursor:pointer;"
-											v-on:click="gallery_pic = `./build/illus_${11-n}.jpg`"
+											v-on:click="gallery_pic = `./build/illus_${12-n}.jpg`"
 											class="grey darken-4"
 										>
 											<template v-slot:placeholder>
@@ -467,7 +524,7 @@
 											Front-End: HTML, CSS, Javascript, Vue.js, Vuetify, Axios, Vue router, Wordpress.
 										</li>
 										<li>
-											Back-End: PHP, Laravel.  
+											Back-End: PHP, MySQL, Laravel.  
 										</li>
 										<li>
 											Design & Illustration: Photoshop, Indesign. CorelDraw.
@@ -538,11 +595,11 @@ export default {
 					icon:'heart',
 					role:'Product Designer',
 					subtitle: 'Exploring Front-end Technologies.',
-					desc:'A dystopic - cyberpunk themed portofolio. I intended to create a simple scalable web to showcase my works, but since it`s my personal website, I`ve decided to create a different-than-standard website that i`m passionate about.',
+					desc:'A dystopic-cyberpunk themed portofolio. A simple scalable web to showcase my works.',
 					feature: [
 						'Mobile friendly and couple of cross browser compatibility workarounds.',
-						'Subtle CSS effects and neon lights are color coded using JS (Intended to give user the ability to control the colors but this would overcomplicate the UX).',
-						'Lightweight resource, effects and assets. to ensure it can run smoother on low end devices.',
+						'Subtle CSS effects and neon lights are color coded using JS.',
+						'Compressed resource, effects and assets. to ensure it can run smoother on low end devices.',
 					],
 				},
 				{
@@ -551,7 +608,7 @@ export default {
 					icon:'home',
 					role: 'Full-Stack Developer',
 					subtitle: 'Private property database management.',
-					desc:'Property documentation webapp for real estate and land owners who are having trouble keeping track their records of asset and documentation, where data privacy is of the utmost importance.',
+					desc:'Property documentation webapp for keeping track records of data and scanned documents, where data privacy is of the utmost importance.',
 					feature: [
 						'Databases of users and their log tracks.',
 						'Information is stored privately.',
@@ -565,7 +622,7 @@ export default {
 					icon:'calculator',
 					role: 'Front-End Developer, Product Designer',
 					subtitle: 'Accounting Software (SaaS).',
-					desc:'Used to be a custom App intended for a poultry feeds SMEs (Small and Medium Enterprises), since the accounting flow only fits a certain niche. Team decided to repurpose it into a general accounting app.',
+					desc:'A custom App intended for a poultry feeds SMEs (Small and Medium Enterprises), since the accounting flow only fits a certain niche. Team decided to repurpose it into a general accounting app.',
 					feature: [
 						'Classic Standardized Admin SPA UI for easier experience.',
 						'Product purchasing, sales and return.',
@@ -579,7 +636,7 @@ export default {
 					icon:'leaf-maple',
 					role: 'Front-End Developer',
 					subtitle: 'Kratom commerce page.',
-					desc:'Client wanted a legit simple commerce page to sell their locally grown herbs. This project was my first real project and there are many things that I could improve now. Regardless still a nice commerce store with Flat and some Material design.',
+					desc:'A simple e-commerce page to sell client`s locally grown herbs.',
 					feature: [
 						'Flat design on home and product description',
 						'Material Design Product list and cart drawer.',
@@ -594,7 +651,7 @@ export default {
 					subtitle: 'Software house.',
 					desc:'A landing homepage for digital agency and software house, run by team of developers with my role as product designer and front-end engineer.',
 					feature: [
-						'Coffee theme for a professional but relaxed experience.',
+						'Coffee Shop theme for a professional but relaxed experience.',
 						'Work In Progress.'
 					]
 				}

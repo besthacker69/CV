@@ -1,12 +1,12 @@
 <template>
     <v-app style="background:none !important;">
 		<div>
-			<loading :loadingNum='loadingNum' v-if="loadingNum == 19"></loading>
+			<loading :loadingNum='loadingNum' v-if="loadingNum > 100"></loading>
 			<div 
 				class="d-flex flex-row align-center px-4" 
 				style="width:100vw; border-bottom:1px solid; border-color:rgb(200,200,200,0.15); position:fixed; height:45px; z-index:9998;"
 				:style="scrollPosition > 50 ? 'background-color:black' : 'background-color:transparent'"
-			>	
+			>
 				<v-app-bar-nav-icon 
 					v-if="$vuetify.breakpoint.xs"
 					@click="openDialog()"
@@ -52,7 +52,6 @@
 						style="font-size:0.8rem; letter-spacing:0.020em; font-weight:300; min-width:100px;"
 					>
 						<span :class="{'white--text': item.hover}">{{ item.title }}</span>
-						<!-- <v-icon>{{item.icon}}</v-icon> -->
 					</v-tab>
 				</v-tabs>
 			</div>
@@ -60,66 +59,11 @@
 				<transition name="slide-fade" mode="out-in">
 					<router-view
 						style=""
-						@getSnackbar="getSnackbar"
 						:user="user"
 						:scrollPosition="scrollPosition"
 					/>
 				</transition>
 			</div>
-			<v-snackbar
-				light
-				v-model="snackbar.active"
-				rounded="pill"
-				timeout="2000"
-				width="100"
-				style="margin-bottom:60px;"
-				>
-				<v-icon>mdi-alert-circle-outline</v-icon>
-				{{ snackbar.error ? snackbar.error : 'Berhasil' }}
-
-				<template v-slot:action="{ attrs }">
-					<v-btn
-						color="primary"
-						text
-						v-bind="attrs"
-						@click="snackbar.active = false"
-					>
-					Close
-					</v-btn>
-				</template>
-			</v-snackbar>
-			<v-dialog
-				v-if="$vuetify.breakpoint.xs"
-				v-model="dialog"
-				fullscreen
-				hide-overlay
-				transition="dialog-top-transition"
-				scrollable
-			>
-				<v-card tile class="black">
-				<v-card-text class="px-2">
-					<v-list 
-						style="padding-top:45px;" 
-						class="transparent"
-					>
-						<v-list-item
-							v-for="item in menu"
-							:key="item.index"
-							@click="menuLink(item.link, item.hash), dialog = false"
-							@mouseover="item.hover = true" 
-							@mouseout="item.hover = false"
-							style="border-bottom:rgb(200,200,200,0.15) 1px solid;"
-						>
-							<v-list-item-content>
-							<v-list-item-title class="grey--text text--lighten-2">{{ item.title }}</v-list-item-title>
-							</v-list-item-content>
-						</v-list-item>
-					</v-list>
-				</v-card-text>
-
-				<div style="flex: 1 1 auto;"></div>
-				</v-card>
-			</v-dialog>
 		</div>
     </v-app>
 </template>
@@ -136,7 +80,6 @@ export default {
         return{
 			loadingNum: 20,
 			scrollPosition: null,
-			dialog: false,
 			debounce: false,
 			permanent: true,
 			expandUser: false,
@@ -173,10 +116,6 @@ export default {
 				},
 			],
 			hueRotate: 0,
-			snackbar: {
-				active: false,
-				error: '',
-			},
 		}
 	},
 	mounted(){
@@ -205,11 +144,6 @@ export default {
 		},
 		drawervalue (value) {
 			this.drawer = value
-		},
-		getSnackbar (error, type) {
-			this.snackbar.active = false
-			this.snackbar.error = error
-			this.snackbar.color = type
 		},
 	},
 	computed: {
