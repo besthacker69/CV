@@ -144,7 +144,7 @@
 									Finance: Bachelor of management economics, Experience as a Credit Analyst - interview and survey of prospective clients, Risk Management, Debt Collecting, and creating WebApp for documentation and reports.
 								</li>
 								<li>
-									Language: Native Indonesian, English, Basic Japanese
+									Language: Native Indonesian, English, Basic Japanese.
 								</li>
 							</ul>
 						</div>
