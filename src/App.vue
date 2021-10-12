@@ -7,13 +7,15 @@
 				style="width:100vw; border-bottom:1px solid; border-color:rgb(200,200,200,0.15); position:fixed; height:45px; z-index:9998;"
 				:style="scrollPosition > 50 ? 'background-color:black' : 'background-color:transparent'"
 			>
-				<v-app-bar-nav-icon 
+				<!-- <v-app-bar-nav-icon 
 					v-if="$vuetify.breakpoint.xs"
 					@click="openDialog()"
 					:disabled="debounce"
-				> <v-icon v-if="dialog == true">mdi-close</v-icon> </v-app-bar-nav-icon>
+				> <v-icon v-if="dialog == true">mdi-close</v-icon> </v-app-bar-nav-icon> -->
 
 				<div 
+					v-if="!$vuetify.breakpoint.xs"
+
 					class="d-flex flex-row px-2" 
 					style="cursor:pointer; line-height:1;"
 					:style="$vuetify.breakpoint.xs || $vuetify.breakpoint.sm ? 'margin:auto;':''" 
@@ -31,7 +33,6 @@
 					</div>
 				</div>
 				<v-tabs
-					v-if="!$vuetify.breakpoint.xs"
 					background-color="transparent"
 					color="grey"
 					hide-slider
@@ -123,6 +124,7 @@ export default {
 	},
     methods: {
 		openDialog() {
+			
 			this.dialog = true
 			this.debounce = true;
       
