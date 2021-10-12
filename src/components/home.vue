@@ -108,14 +108,15 @@
 					:class="$vuetify.breakpoint.xs ? 'pa-0':'pa-4'"
 				>
 					<v-col
+						:class="$vuetify.breakpoint.xs ? 'pt-8 pb-0':'pa-4'"
 						style="max-width:500px;"
 						cols="12"
 						sm="5"
 					>
-						<div :class="$vuetify.breakpoint.xs ? 'pt-4 px-4': 'pa-4' ">
+						<div :class="$vuetify.breakpoint.xs ? 'pt-4 px-4': 'pa-8' ">
 							<span class="text-h4">Summary</span>
 							<v-divider style="border-color:white;"/>
-							<p class="text-caption pa-4">Full-stack Web Developer with a background in Concept design and Finance.</p>
+							<p class="text-caption pa-4 ma-0">Full-stack Web Developer with a background in Concept design and Finance.</p>
 							
 							<span class="text-h4">Skills</span>
 							<v-divider style="border-color:white;"/>
@@ -225,6 +226,52 @@
 				>
 					<v-col 
 						cols="12"
+						md="5"
+						:class="$vuetify.breakpoint.xs ? 'py-1 px-0':'pa-1'"
+						
+					>
+						<v-card
+							class="mx-auto pa-4"
+							color="transparent"
+							max-width="500"
+						>
+							<div style="border-left:8px double white;">
+								<v-list dense flat shaped color="transparent">
+									<v-list-item-group
+										v-model="model"
+										active-class="white black--text"
+										mandatory
+									>
+										<template v-for="(item, i) in items">
+											<v-divider
+												v-if="!item"
+												:key="`divider-${i}`"
+											></v-divider>
+
+											<v-list-item
+												v-else
+												:key="`item-${i}`"
+												:value="item"
+												style="background-color:rgba(0,0,0,0.7)"
+											>
+												<template>
+													<v-list-item-icon>
+														<v-icon>mdi-{{item.icon}}</v-icon>
+													</v-list-item-icon>
+													<v-list-item-content>
+														<v-list-item-title v-text="item.name"></v-list-item-title>
+														<v-list-item-subtitle v-text="item.subtitle" class="text-caption grey--text text--darken-1"></v-list-item-subtitle>
+													</v-list-item-content>
+												</template>
+											</v-list-item>
+										</template>
+									</v-list-item-group>
+								</v-list>
+							</div>
+						</v-card>
+					</v-col>
+					<v-col 
+						cols="12"
 						md="6"
 						:class="$vuetify.breakpoint.xs ? 'py-1 px-0':'pa-1'"
 					>
@@ -293,74 +340,6 @@
 								</v-card>
 							</div>
 						</transition>
-					</v-col>
-					<v-col 
-						cols="12"
-						md="5"
-						:class="$vuetify.breakpoint.xs ? 'py-1 px-0':'pa-1'"
-						
-					>
-						<!-- <v-tabs
-							v-if="$vuetify.breakpoint.xs || $vuetify.breakpoint.sm"
-							v-model="model"
-							background-color="transparent"
-							active-class="white black--text"
-							hide-slider
-							centered
-							dark
-							icons-and-text
-							style="border-bottom:8px double white;"
-						>
-							<v-tab 
-								v-for="(item, i) in items"
-								:key="`divider-${i}`"
-								style="border-radius:20px 20px 0 0; text-transform: capitalize;"
-
-							>
-								{{item.name}}
-								<v-icon large>mdi-{{item.icon}}</v-icon>
-							</v-tab>
-						</v-tabs> -->
-						
-						<v-card
-							class="mx-auto pa-4"
-							color="transparent"
-							max-width="500"
-						>
-							<div style="border-left:8px double white;">
-								<v-list dense flat shaped color="transparent">
-									<v-list-item-group
-										v-model="model"
-										active-class="white black--text"
-										mandatory
-									>
-										<template v-for="(item, i) in items">
-											<v-divider
-												v-if="!item"
-												:key="`divider-${i}`"
-											></v-divider>
-
-											<v-list-item
-												v-else
-												:key="`item-${i}`"
-												:value="item"
-												style="background-color:rgba(0,0,0,0.7)"
-											>
-												<template>
-													<v-list-item-icon>
-														<v-icon>mdi-{{item.icon}}</v-icon>
-													</v-list-item-icon>
-													<v-list-item-content>
-														<v-list-item-title v-text="item.name"></v-list-item-title>
-														<v-list-item-subtitle v-text="item.subtitle" class="text-caption grey--text text--darken-1"></v-list-item-subtitle>
-													</v-list-item-content>
-												</template>
-											</v-list-item>
-										</template>
-									</v-list-item-group>
-								</v-list>
-							</div>
-						</v-card>
 					</v-col>
 				</v-row>
 			</v-container>
