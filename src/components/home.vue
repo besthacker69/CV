@@ -111,9 +111,10 @@
 						:class="$vuetify.breakpoint.xs ? 'pt-8 pb-0':'pa-4'"
 						style="max-width:500px;"
 						cols="12"
-						sm="5"
+						sm="6"
+						md="5"
 					>
-						<div :class="$vuetify.breakpoint.xs ? 'pt-4 px-4': 'pa-8' ">
+						<div :class="$vuetify.breakpoint.xs ? 'pt-4 px-4': $vuetify.breakpoint.sm ? 'pt-6': 'pa-8' ">
 							<span class="text-h4">Summary</span>
 							<v-divider style="border-color:white;"/>
 							<p class="text-caption pa-4 ma-0">Full-stack Web Developer with a background in Concept design and Finance.</p>
@@ -150,7 +151,8 @@
 					</v-col>
 					<v-col
 						cols="12"
-						sm="5"
+						sm="6"
+						md="5"
 						class="pa-0"
 					>
 						<v-img
@@ -683,25 +685,25 @@ export default {
 	watch: {
 		scrollPosition: function (val) {
 			if (this.$vuetify.breakpoint.xs) {
-				if (val < 300) {
+				if (val < 1300) {
 				this.backImg = './build/back.jpg'
-				} else if (val < 1700) {
+				} else if (val < 2700) {
 					this.backImg = './build/back4.jpg'
 				} else {
 					this.backImg = './build/back3.jpg'
 				}
 			} else if (this.$vuetify.breakpoint.sm) {
-				if (val < 200) {
+				if (val < 900) {
 				this.backImg = './build/back.jpg'
-				} else if (val < 1500) {
+				} else if (val < 2300) {
 					this.backImg = './build/back4.jpg'
 				} else {
 					this.backImg = './build/back3.jpg'
 				}
 			} else {
-				if (val < 400) {
+				if (val < 1100) {
 				this.backImg = './build/back.jpg'
-				} else if (val < 1700) {
+				} else if (val < 2300) {
 					this.backImg = './build/back4.jpg'
 				} else {
 					this.backImg = './build/back3.jpg'
