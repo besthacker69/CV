@@ -576,7 +576,7 @@ export default {
 					icon:'heart',
 					role:'Product Designer',
 					subtitle: 'Exploring Front-end Technologies.',
-					desc:'A Cyberpunk themed portofolio. A simple scalable web to showcase my works.',
+					desc:'A simple scalable web to showcase my works.',
 					feature: [
 						'Mobile friendly and couple of cross browser compatibility workarounds.',
 						'Subtle CSS effects and neon lights are color coded using JS.',
